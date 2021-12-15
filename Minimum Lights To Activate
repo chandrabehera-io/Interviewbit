@@ -1,0 +1,25 @@
+public class Solution {
+    public int solve(int[] A, int B) {
+
+        int n=A.length;
+        int i=0,count=0;
+        int res=0;
+        while(i<n){
+            int right_limit=Math.min(n-1,i+B-1);
+            int left_limit=Math.max(i-B+1,0);
+            boolean bulbfound=false;
+            while(right_limit>left_limit){
+                if(A[right_limit]==1){
+                    bulbfound=true;
+                    break;
+                }
+                right_limit--;
+            }
+            if(!bulbfound) return -1;
+
+            count++;
+            i=right_limit+B;
+        }
+        return count;
+    }
+}
